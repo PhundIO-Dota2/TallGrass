@@ -58,7 +58,7 @@ function init_revealer_group(position)
     local revealers = { }
     local ents = Entities:FindAllInSphere(position, 240)
     for k, ent in ipairs(ents) do
-        if ent:GetName() == "bush_fow_revealer" then
+        if string.match(ent:GetName(), "bush_fow_revealer") then
             revealers[#revealers + 1] = ent:GetAbsOrigin()
         end
     end
@@ -159,5 +159,7 @@ end
 
 local fow_revealers = Entities:FindAllByModel("models/props_gameplay/rune_invisibility01.vmdl")
 for k, revealer in ipairs(fow_revealers) do
-    revealer:SetModel("models/development/invisiblebox.vmdl")
+    if(string.match(revealer:GetName(), "bush_fow_revealer")) then
+        revealer:SetModel("models/development/invisiblebox.vmdl")
+    end
 end
