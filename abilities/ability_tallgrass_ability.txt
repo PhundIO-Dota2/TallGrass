@@ -1,0 +1,31 @@
+"ability_tallgrass_ability" {
+    "BaseClass"              		"ability_datadriven"
+	"AbilityType"            		"DOTA_ABILITY_TYPE_BASIC"
+	"MaxLevel" 						"0"
+	
+	"AbilityBehavior"        		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+	"Modifiers" {
+        "modifier_bush_invisible" {
+            "IsPurgable"		"0"
+            "IsHidden"			"1"
+            "OnAttackStart" {
+            	"RunScript" {
+            		"ScriptFile"		"tallgrass_vscripts/tall_grass"
+            		"Function"			"unit_attack"
+            		"Target"			"TARGET"
+            		"Caster"			"CASTER"
+            		"Attacker"			"ATTACKER"
+            	}
+            }
+            "States" { 
+                "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+        "modifier_bush_invisible_revealed" {
+            "IsDebuff"			"1"
+            "IsPurgable"		"0"
+            "IsHidden"			"1"
+        }
+    }
+}
