@@ -74,7 +74,7 @@ function build_revealer_group(revealers)
     for k, v in ipairs(revealers) do
         local ents = Entities:FindAllInSphere(v, 240)
         for k, ent in ipairs(ents) do
-            if ent:GetName() == "bush_fow_revealer" then
+            if string.match(ent:GetName(), "bush_fow_revealer") then
                 if not tall_grass_table_contains(revealers, ent:GetAbsOrigin()) then
                     revealers[#revealers + 1] = ent:GetAbsOrigin()
                 end
